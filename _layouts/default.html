@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{{ site.description | strip | escape }}">
+    <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrapper nav">
+        <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="{{ '/' | relative_url }}">Home</a>
+          {% for path in site.header_pages %}
+            {% assign nav_page = site.pages | where: "path", path | first %}
+            {% if nav_page.title %}
+              <a href="{{ nav_page.url | relative_url }}">{{ nav_page.title }}</a>
+            {% endif %}
+          {% endfor %}
+          <a href="https://github.com/{{ site.github_username }}">GitHub</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-content">
+      <div class="wrapper">
+        {{ content }}
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrapper footer-grid">
+        <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}</p>
+        <p>Built with Jekyll and hosted on GitHub Pages.</p>
+      </div>
+    </footer>
+  </body>
+</html>

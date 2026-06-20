@@ -1,11 +1,85 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>私のホームページ</title>
-</head>
-<body>
-    <h1>こんにちは！私のホームページへようこそ</h1>
-    <p>ここに自己紹介や趣味などを書いていきます。</p>
-</body>
-</html>
+---
+layout: default
+title: Home
+---
+
+<section class="hero">
+  <div class="hero__content">
+    <p class="eyebrow">Personal Homepage</p>
+    <h1>Shoji Yuen</h1>
+    <p class="lead">
+      Research, teaching, software, and notes on programming languages,
+      reversible computing, and related systems.
+    </p>
+    <div class="hero__actions">
+      <a class="button button--primary" href="#research">Research</a>
+      <a class="button" href="#contact">Contact</a>
+    </div>
+  </div>
+</section>
+
+<section class="section intro-grid" aria-label="Overview">
+  <article>
+    <h2>Research</h2>
+    <p>
+      I work on programming language theory and implementation, with interests
+      around semantics, program transformation, reversible computation, and
+      tools that make formal ideas usable.
+    </p>
+  </article>
+  <article>
+    <h2>Teaching</h2>
+    <p>
+      Course materials, lecture notes, and small programming examples live here
+      alongside project updates and public resources.
+    </p>
+  </article>
+  <article>
+    <h2>Projects</h2>
+    <p>
+      This site collects links to code, papers, experiments, and ongoing work.
+      More pages can be added as the site grows.
+    </p>
+  </article>
+</section>
+
+<section class="section highlight" id="research">
+  <div>
+    <p class="eyebrow">Focus Areas</p>
+    <h2>Programming Languages and Reversible Computation</h2>
+    <p>
+      The site is organized as a lightweight academic homepage: a place for
+      research themes, publications, teaching resources, and project links.
+    </p>
+  </div>
+  <ul class="pill-list" aria-label="Research keywords">
+    <li>Semantics</li>
+    <li>Program Analysis</li>
+    <li>Reversible Computing</li>
+    <li>Compilers</li>
+    <li>Formal Methods</li>
+  </ul>
+</section>
+
+<section class="section two-column">
+  <div>
+    <h2>Latest Notes</h2>
+    <ul class="link-list">
+      {% for post in site.posts limit:3 %}
+      <li>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <span>{{ post.date | date: "%Y-%m-%d" }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div id="contact">
+    <h2>Contact</h2>
+    <p>
+      GitHub: <a href="https://github.com/{{ site.github_username }}">@{{ site.github_username }}</a>
+    </p>
+    <p>
+      GitHub is the primary public contact link for project updates and related code.
+    </p>
+  </div>
+</section>
